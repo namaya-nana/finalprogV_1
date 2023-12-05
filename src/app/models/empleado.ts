@@ -1,5 +1,4 @@
 export class Empleado{
-    _id?: number;
     Nombre: string;
     Apellido: string;
     DNI: number;

@@ -4,22 +4,38 @@
             <div class="card">
                 <div class="card-body text-center">
                     <span class="titulo">CREAR EMPLEADOS</span>
-                    <form [formGroup]="empleadoForm" (ngSubmit)="agregarEmmpleado()">
+                    <form [formGroup]="empleadoForm" (ngSubmit)="agregarEmpleado ()">
                         <div class="mb-3" >  
                             <input type="text"  formControlName="Nombre" class="form-control form-control-lg"
                             placeholder="Nombre">
+                            <div class="text-danger"
+                                *ngIf="empleadoForm.get('Nombre')?.hasError('required') && empleadoForm.get('Nombre')?.touched">
+                                <span>El nombre del empleado <strong>es obligatorio</strong></span>
+                            </div>
                         </div>
                         <div class="mb-3">  
                             <input type="text" formControlName="Apellido" class="form-control form-control-lg"
                             placeholder="Apellido">
+                            <div class="text-danger"
+                                *ngIf="empleadoForm.get('Apellido')?.hasError('required') && empleadoForm.get('Apellido')?.touched">
+                                <span>El Apellido del empleado <strong>es obligatorio</strong></span>
+                            </div>
                         </div>
                         <div class="mb-3">  
                             <input type="number" formControlName="DNI" class="form-control form-control-lg"
                             placeholder="DNI">
+                            <div class="text-danger"
+                                *ngIf="empleadoForm.get('DNI')?.hasError('required') && empleadoForm.get('DNI')?.touched">
+                                <span>El DNI del empleado <strong>es obligatorio</strong></span>
+                            </div>
                         </div>
                         <div class="mb-3">  
                             <input type="text" formControlName="Domicilio" class="form-control form-control-lg"
                             placeholder="Domicilio">
+                            <div class="text-danger"
+                            *ngIf="empleadoForm.get('Domicilio')?.hasError('required') && empleadoForm.get('Domicilio')?.touched">
+                            <span>El Domicilio del empleado <strong>es obligatorio</strong></span>
+                        </div>
                         </div>
                             <div class="mb-3">
                                 <button routerLink='' class="btn btn-secondary btn-lg float-start">VOLVER</button>

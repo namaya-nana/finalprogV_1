@@ -1,12 +1,13 @@
 export const environment = {
   production: false,
   firebaseConfig: {
-    apiKey: 'AIzaSyDOlx0ouKTNU-Kndbxrk-JVDlwUn8S0F7k',
-    authDomain: 'pruebaimplement.firebaseapp.com',
-    projectId: 'pruebaimplement',
-    storageBucket: 'pruebaimplement.appspot.com',
-    messagingSenderId: '679296736112',
-    appId: '1:679296736112:web:69117bf5643b46e7c8cdb5',
-    measurementId: "G-R4FRGDZZDM"
+    apiKey: "AIzaSyC8mwVZmdBdAECHtAqpi8DeIaFZyXYVI4w",
+    authDomain: "dbfinal-ae0c4.firebaseapp.com",
+    databaseURL: "https://dbfinal-ae0c4-default-rtdb.firebaseio.com",
+    projectId: "dbfinal-ae0c4",
+    storageBucket: "dbfinal-ae0c4.appspot.com",
+    messagingSenderId: "391134558905",
+    appId: "1:391134558905:web:41603d64b159ecfeb6b968",
+    measurementId: "G-WSSMV7RQYZ"
   }
 };

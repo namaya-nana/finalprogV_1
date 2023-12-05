@@ -16,27 +16,16 @@
                           </tr>
                         </thead>
                         <tbody>
-                          <tr>
-                            <td>Natalia</td>
-                            <td>Amaya</td>
-                            <td>27062096</td>
-                            <td>Palacios 259. Gutierrez</td>
+                          <tr *ngFor="let empleado of empleados$ | async">
+                            <td>{{ empleado.Nombre }}</td>
+                            <td>{{ empleado.Apellido }}</td>
+                            <td>{{ empleado.DNI }}</td>
+                            <td>{{ empleado.Domicilio }}</td>
                             <td>
-                                <i class="fas fa-edit text-primary"></i>
-                                <i class="fas fa-trash text-danger"></i>
+                              <i class="fas fa-edit text-primary"></i>
+                              <i class="fas fa-trash text-danger"></i>
                             </td>
                           </tr>
-                          <tr>
-                            <td>Gabriel</td>
-                            <td>Arias</td>
-                            <td>39992670</td>
-                            <td>Estepe 444. Villa Nueva</td>
-                            <td>
-                                <i class="fas fa-edit text-primary"></i>
-                                <i class="fas fa-trash text-danger"></i>
-                            </td>
-                          </tr>
-                       
                         </tbody>
                       </table>
                 </div>

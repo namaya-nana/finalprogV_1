@@ -1,5 +1,7 @@
 import { Component } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { Empleado } from 'src/app/models/empleado';
+import { EmpleadoService } from 'src/app/services/empleado.service';
 
 @Component({
   selector: 'app-crear-empleado',
@@ -9,7 +11,7 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 export class CrearEmpleadoComponent {
   empleadoForm: FormGroup;
 
-  constructor(private fb: FormBuilder) { 
+  constructor(private fb: FormBuilder, private empleadoService: EmpleadoService) { 
       this.empleadoForm = this.fb.group({
           Nombre: ['', Validators.required],
           Apellido: ['', Validators.required],
@@ -18,11 +20,34 @@ export class CrearEmpleadoComponent {
       })
   }
 
-ngOnInit(): void {
-}
+  ngOnInit(): void {}
 
-agregarEmmpleado(){
-  console.log(this.empleadoForm);
-}
+  // Agregar un nuevo empleado
+  agregarEmpleado() {
+    const nombreControl = this.empleadoForm.get('Nombre');
+    const apellidoControl = this.empleadoForm.get('Apellido');
+    const dniControl = this.empleadoForm.get('DNI');
+    const domicilioControl = this.empleadoForm.get('Domicilio');
 
+    if (nombreControl && apellidoControl && dniControl && domicilioControl) {
+      const nuevoEmpleado: Empleado = {
+        Nombre: nombreControl.value,
+        Apellido: apellidoControl.value,
+        DNI: dniControl.value,
+        Domicilio: domicilioControl.value,
+      };
+
+      // Llamar al servicio para agregar el empleado
+      this.empleadoService.agregarEmpleado(nuevoEmpleado).then(() => {
+        // Limpiar el formulario después de agregar el empleado
+        this.empleadoForm.reset();
+      }).catch(error => {
+        console.error('Error al agregar empleado:', error);
+        // Manejar el error de manera apropiada (puedes mostrar un mensaje al usuario, etc.)
+      });
+    } else {
+      // Marcar campos del formulario como tocados para mostrar mensajes de validación
+      this.empleadoForm.markAllAsTouched();
+    }
+  }
 }
